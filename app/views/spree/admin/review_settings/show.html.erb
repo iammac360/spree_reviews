@@ -12,6 +12,18 @@
     <td><%= Spree::Reviews::Config[:feedback_rating] ? t('yes') : t('no') %></td>
   </tr>
   <tr>
+    <th scope="row"><%= t("spree_reviews.feedback_quality_rating") %>:</th>
+    <td><%= Spree::Reviews::Config[:feedback_quality_rating] ? t('yes') : t('no') %></td>
+  </tr>
+  <tr>
+    <th scope="row"><%= t("spree_reviews.feedback_appearance_rating") %>:</th>
+    <td><%= Spree::Reviews::Config[:feedback_appearance_rating] ? t('yes') : t('no') %></td>
+  </tr>
+  <tr>
+    <th scope="row"><%= t("spree_reviews.feedback_price_rating") %>:</th>
+    <td><%= Spree::Reviews::Config[:feedback_price_rating] ? t('yes') : t('no') %></td>
+  </tr>
+  <tr>
     <th scope="row"><%= t("spree_reviews.show_email") %>:</th>
     <td><%= Spree::Reviews::Config[:show_email] ? t('yes') : t('no') %></td>
   </tr>

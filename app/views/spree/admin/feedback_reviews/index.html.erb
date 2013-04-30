@@ -6,6 +6,9 @@
     <th><%= t('date_') %></th>
     <th><%= t('user') %></th>
     <th><%= t('stars') %></th>
+    <th><%= t('quality_stars') %></th>
+    <th><%= t('appearance_stars') %></th>
+    <th><%= t('price_stars') %></th>
     <th></th>
   </tr>
   <% @collection.each do |feedback| %>
@@ -13,6 +16,9 @@
       <td><%= l feedback.created_at %></td>
       <td><%= feedback.user.try(:login) || "anonimus" %></td>
       <td><%= feedback.rating %></td>
+      <td><%= feedback.quality_rating %></td>
+      <td><%= feedback.appearance_rating %></td>
+      <td><%= feedback.price_rating %></td>
       <td class="actions">
         <%= link_to_delete feedback  %>
       </td>

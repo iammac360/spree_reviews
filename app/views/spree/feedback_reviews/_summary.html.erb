@@ -3,4 +3,17 @@
   <span title="<%=pluralize(review.feedback_stars, 'star')%> out of 5">
   <%= render :partial => "spree/reviews/stars", :locals => {:stars => review.feedback_stars} %>
   </span> &nbsp;
+
+  <span title="<%=pluralize(review.feedback_quality_stars, 'star')%> out of 5">
+  <%= render :partial => "spree/reviews/quality_stars", :locals => {:stars => review.feedback_quality_stars} %>
+  </span> &nbsp;
+
+  <span title="<%=pluralize(review.feedback_appearance_stars, 'star')%> out of 5">
+  <%= render :partial => "spree/reviews/appearance_stars", :locals => {:stars => review.feedback_appearance_stars} %>
+  </span> &nbsp;
+
+  <span title="<%=pluralize(review.feedback_price_stars, 'star')%> out of 5">
+  <%= render :partial => "spree/reviews/price_stars", :locals => {:stars => review.feedback_price_stars} %>
+  </span> &nbsp;
+
 </p>

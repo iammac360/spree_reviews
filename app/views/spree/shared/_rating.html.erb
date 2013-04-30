@@ -1,15 +1,36 @@
-<% stars = product.stars %>
+<!--<#% stars = product.stars %>-->
+<% quality_stars = product.quality_stars %>
+<% appearance_stars = product.appearance_stars %>
+<% price_stars = product.price_stars %>
 <% reviews_count = product.reviews_count %>
 <div class="ratings">
-  <p><%= t('average_customer_rating') %>: </p>
-  <p class="ratings-stars">
-    <span title="<%= txt_stars(stars) %>">
-      <%= render :partial => "spree/reviews/stars", :locals => {:stars => stars} %>
+  <h4><%= t('average_customer_rating') %>: </h4>
+  <!--<p class="ratings-stars">-->
+    <!--<span title="<#%= txt_stars(stars) %>">-->
+      <!--<#@%= render :partial => "spree/reviews/stars", :locals => {:stars => stars} %>-->
+    <!--</span>-->
+  <!--</p>-->
+  <p class="ratings-stars">Quality
+    <span title="<%= txt_stars(quality_stars) %>">
+      <%= render :partial => "spree/reviews/quality_stars", :locals => {:stars => quality_stars} %>
+    </span>
+  </p>
+  <p class="ratings-stars">Appearance
+    <span title="<%= txt_stars(appearance_stars) %>">
+      <%= render :partial => "spree/reviews/appearance_stars", :locals => {:stars => appearance_stars} %>
+    </span>
+  </p>
+  <p class="ratings-stars">Price
+    <span title="<%= txt_stars(price_stars) %>">
+      <%= render :partial => "spree/reviews/price_stars", :locals => {:stars => price_stars} %>
     </span>
   </p>
   <p class="ratings-basedupon">(<%= t('based_upon_review_count', :count => reviews_count) %>)</p>
   <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-    <meta itemprop="ratingValue" content="<%= stars %>" />
+    <!--<meta itemprop="ratingValue" content="<#%= stars %>" />-->
+    <meta itemprop="qualityRatingValue" content="<%= quality_stars %>" />
+    <meta itemprop="appearanceRatingValue" content="<%= appearance_stars %>" />
+    <meta itemprop="priceRatingValue" content="<%= price_stars %>" />
     <meta itemprop="reviewCount" content="<%= reviews_count %>" />
   </div>
 </div>

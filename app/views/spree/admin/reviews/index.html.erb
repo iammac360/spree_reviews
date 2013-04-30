@@ -6,7 +6,10 @@
   <tr>
     <th><%= Spree::Review.human_attribute_name(:created_at) %></th>
     <th><%= Spree::Review.human_attribute_name(:user) %></th>
-    <th><%= Spree::Review.human_attribute_name(:rating) %></th>
+    <!--<th><#%= Spree::Review.human_attribute_name(:rating) %></th>-->
+    <th><%= Spree::Review.human_attribute_name(:quality_rating) %></th>
+    <th><%= Spree::Review.human_attribute_name(:appearance_rating) %></th>
+    <th><%= Spree::Review.human_attribute_name(:price_rating) %></th>
     <th><%= Spree::Review.human_attribute_name(:title) %> / <%= t('product') %></th>
     <th><%= Spree::Review.human_attribute_name(:review) %></th>
     <th></th>
@@ -21,7 +24,13 @@
       <p><%= Spree::Review.human_attribute_name(:ip_address) %>: <%= review.ip_address ? link_to(review.ip_address, "http://whois.domaintools.com/#{review.ip_address}") : '-' %></p>
     </td>
     <td>
-      <%= txt_stars(review.rating) %>
+      <%= txt_stars(review.quality_rating) %>
+    </td>
+    <td>
+      <%= txt_stars(review.appearance_rating) %>
+    </td>
+    <td>
+      <%= txt_stars(review.price_rating) %>
     </td>
     <td>
       <%= review.title %>

@@ -1,9 +1,24 @@
 <%= form_for review, :url => product_reviews_path(product), :html => {:method => :post} do |f| %>
   <%= render "spree/shared/error_messages", :target => review %>
 
+  <!--<p class="review_rating_field">-->
+    <!--<#%= f.label :rating %> <span class="required">*</span><br />-->
+    <!--<#%= render :partial => "spree/reviews/stars", :locals => {:stars => review.rating, :edit_enabled => true} %>-->
+  <!--</p>-->
+
   <p class="review_rating_field">
-    <%= f.label :rating %> <span class="required">*</span><br />
-    <%= render :partial => "spree/reviews/stars", :locals => {:stars => review.rating, :edit_enabled => true} %>
+    <%= f.label :quality_rating %> <span class="required">*</span><br />
+    <%= render :partial => "spree/reviews/quality_stars", :locals => {:stars => review.quality_rating, :edit_enabled => true} %>
+  </p>
+
+  <p class="review_rating_field">
+    <%= f.label :appearance_rating %> <span class="required">*</span><br />
+    <%= render :partial => "spree/reviews/appearance_stars", :locals => {:stars => review.appearance_rating, :edit_enabled => true} %>
+  </p>
+
+  <p class="review_rating_field">
+    <%= f.label :price_rating %> <span class="required">*</span><br />
+    <%= render :partial => "spree/reviews/price_stars", :locals => {:stars => review.price_rating, :edit_enabled => true} %>
   </p>
 
   <p class="review_name_field">

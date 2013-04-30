@@ -1,8 +1,26 @@
 <% stars = product.stars %>
-<% reviews_count = product.reviews_count %>
-<span style="float:left;" title="<%= txt_stars(stars) %>">
-  <%= render :partial => "spree/reviews/stars", :locals => {:stars => stars} %>
-</span>
+<!--<#% reviews_count = product.reviews_count %>-->
+<% quality_stars = product.quality_stars %>
+<% appearance_stars = product.appearance_stars %>
+<% price_stars = product.price_stars %>
+<!--<span style="float:left;" title="<#%= txt_stars(stars) %>">-->
+  <!--<#%= render :partial => "spree/reviews/stars", :locals => {:stars => stars} %>-->
+<!--</span>-->
+<p class="ratings-stars">Quality
+    <span title="<%= txt_stars(quality_stars) %>">
+      <%= render :partial => "spree/reviews/quality_stars", :locals => {:stars => quality_stars} %>
+    </span>
+</p>
+<p class="ratings-stars">Appearance
+    <span title="<%= txt_stars(appearance_stars) %>">
+      <%= render :partial => "spree/reviews/appearance_stars", :locals => {:stars => appearance_stars} %>
+    </span>
+</p>
+<p class="ratings-stars">Price
+    <span title="<%= txt_stars(price_stars) %>">
+      <%= render :partial => "spree/reviews/price_stars", :locals => {:stars => price_stars} %>
+    </span>
+</p>
 <span style="float:right;">
   <%= Spree::Review.model_name.human(:count => reviews_count) %>
 </span>
