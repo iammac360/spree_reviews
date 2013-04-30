@@ -1,7 +1,7 @@
 <div class="review" itemprop="reviews" itemscope itemtype="http://schema.org/Review">
-  <!--<span class="reviews-rating" title="<#%= txt_stars(review.rating) %>">-->
-    <!--<#%= render :partial => "spree/reviews/stars", :locals => {:stars => review.rating} %>-->
-  <!--</span>-->
+  <span class="reviews-rating" title="<%= txt_stars(review.rating) %>">
+    <#%= render :partial => "spree/reviews/stars", :locals => {:stars => review.rating} %>
+  </span>
   <p>Quality
     <span class="reviews-rating" title="<%= txt_stars(review.quality_rating) %>">
       <%= render :partial => "spree/reviews/quality_stars", :locals => {:stars => review.quality_rating} %>
@@ -30,7 +30,7 @@
   <div itemprop="reviewBody">
     <%= simple_format(review.review) %>
   </div>
-  <% if spree_current_user %>
+  <% if Spree::Reviews::Config[:feedback_rating] && (!Spree::Reviews::Config[:require_login] || spree_current_user) %>
   <div class="feedback_review" id="feedback_review_<%= review.id %>">
     <%= render :partial => "spree/feedback_reviews/form", :locals => {:review => review} %>
   </div>
