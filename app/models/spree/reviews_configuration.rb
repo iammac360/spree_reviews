@@ -11,6 +11,10 @@ class Spree::ReviewsConfiguration < Spree::Preferences::Configuration
   # show helpfullness rating form elements
   preference :feedback_rating, :boolean, :default => false
 
+  preference :feedback_quality_rating, :boolean, :default => false
+  preference :feedback_appearance_rating, :boolean, :default => false
+  preference :feedback_price_rating, :boolean, :default => false
+
   # require login to post reviews
   preference :require_login, :boolean, :default => true
   

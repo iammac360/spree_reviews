@@ -7,7 +7,11 @@ class Spree::Review < ActiveRecord::Base
   after_destroy :recalculate_product_rating
 
   validates_presence_of     :name, :review
-  validates_numericality_of :rating, :only_integer => true
+  #validates_numericality_of :rating, :only_integer => true
+  validates_numericality_of :quality_rating, :only_integer => true
+  validates_numericality_of :appearance_rating, :only_integer => true
+  validates_numericality_of :price_rating, :only_integer => true
+
 
   default_scope order("spree_reviews.created_at DESC")
   
@@ -42,11 +46,29 @@ class Spree::Review < ActiveRecord::Base
     ((feedback_reviews.sum(:rating) / feedback_reviews.size) + 0.5).floor
   end
 
+  def feedback_quality_stars
+    return 0 if feedback_reviews.size <= 0
+    ((feedback_reviews.sum(:quality_rating) / feedback_reviews.size) + 0.5).floor
+  end
+
+  def feedback_appearance_stars
+    return 0 if feedback_reviews.size <= 0
+    ((feedback_reviews.sum(:appearance_rating) / feedback_reviews.size) + 0.5).floor
+  end
+
+  def feedback_price_stars
+    return 0 if feedback_reviews.size <= 0
+    ((feedback_reviews.sum(:price_rating) / feedback_reviews.size) + 0.5).floor
+  end
+
   def recalculate_product_rating
     reviews_count = product.reviews.reload.approved.count
 
     if reviews_count > 0
       product.avg_rating = product.reviews.approved.sum(:rating).to_f / reviews_count
+      product.avg_rating_quality = product.reviews.approved.sum(:quality_rating).to_f / reviews_count
+      product.avg_rating_appearance = product.reviews.approved.sum(:appearance_rating).to_f / reviews_count
+      product.avg_rating_price = product.reviews.approved.sum(:price_rating).to_f / reviews_count
       product.reviews_count = reviews_count
       product.save
     else
