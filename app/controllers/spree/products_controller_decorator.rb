@@ -2,13 +2,14 @@ Spree::ProductsController.class_eval do
   helper Spree::ReviewsHelper
 
   def show
+
     return unless @product
 
     @variants = @product.variants_including_master.active(current_currency).includes([:option_values, :images])
     @product_properties = @product.product_properties.includes(:property)
-
     @review = Spree::Review.new(:product => @product)
-    authorize! :create, @review
+    #authorize! :create, @review
+
 
     referer = request.env['HTTP_REFERER']
     if referer
