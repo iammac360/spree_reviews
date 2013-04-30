@@ -19,7 +19,7 @@ class AddModifedRatingsToProducts < ActiveRecord::Migration
     elsif table_exists?('spree_products')
       remove_column :spree_products, :avg_rating_quality
       remove_column :spree_products, :avg_rating_appearance
-      remove_column :spree_products, :avg_rating_priceavg_rating
+      remove_column :spree_products, :avg_rating_price
     end
   end
 end
