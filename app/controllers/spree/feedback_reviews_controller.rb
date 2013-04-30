@@ -3,6 +3,9 @@ class Spree::FeedbackReviewsController < Spree::StoreController
 
   def create
     params[:feedback_review][:rating].sub!(/\s*[^0-9]*$/,'') unless params[:feedback_review][:rating].blank?
+    params[:feedback_review][:quality_rating].sub!(/\s*[^0-9]*$/,'') unless params[:feedback_review][:quality_rating].blank?
+    params[:feedback_review][:appearance_rating].sub!(/\s*[^0-9]*$/,'') unless params[:feedback_review][:appearance_rating].blank?
+    params[:feedback_review][:price_rating].sub!(/\s*[^0-9]*$/,'') unless params[:feedback_review][:price_rating].blank?
 
     @review = Spree::Review.find_by_id(params[:review_id])
     if @review && @feedback_review = @review.feedback_reviews.new(params[:feedback_review])
